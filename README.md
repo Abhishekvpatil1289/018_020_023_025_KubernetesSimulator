@@ -4,9 +4,10 @@ A mini-project simulating core Kubernetes features, including node management, p
 
 ## Team
 - **SRNs**: 018, 020, 023, 025
-- **Institution**: [Your Institution Name, e.g., XYZ University]
-- **Course**: [Course Name, e.g., Cloud Computing]
-- **Instructor**: [Instructor Name, if required]
+- **Name**: Abhishek Patil ,Abhishek G M , Achyuth K , Adarsh 
+- **Institution**: PES University
+- **Course**:  Cloud Computing
+
 
 ## Project Overview
 The Kubernetes Simulator replicates key Kubernetes functionalities in a lightweight, local environment:
