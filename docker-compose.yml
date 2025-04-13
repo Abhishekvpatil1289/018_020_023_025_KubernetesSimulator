@@ -1,0 +1,14 @@
+
+version: "3.8"
+services:
+  api-server:
+    build: ./api_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api_server:/app
+    networks:
+      - cluster-net
+networks:
+  cluster-net:
+    driver: bridge
