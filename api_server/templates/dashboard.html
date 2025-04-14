@@ -1,32 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Cluster Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid black; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f0f0f0;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 3em;
+            color: #00ffe7;
+            text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7;
+        }
+
+        table {
+            width: 90%;
+            margin: 0 auto 60px;
+            border-collapse: collapse;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: rgba(0, 0, 0, 0.5);
+            color: #00ffe7;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1em;
+            position: sticky;
+            top: 0;
+        }
+
+        td {
+            font-size: 1em;
+            color: #e0f7fa;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        tr:hover {
+            background-color: rgba(0, 255, 255, 0.05);
+            transition: background 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                padding: 10px 20px;
+                position: relative;
+                border: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                top: 10px;
+                left: 20px;
+                font-weight: bold;
+                color: #00ffe7;
+                text-transform: uppercase;
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>Cluster Dashboard</h1>
     <table>
-        <tr>
-            <th>Node ID</th>
-            <th>CPU Cores</th>
-            <th>Available Cores</th>
-            <th>Status</th>
-            <th>Pods</th>
-        </tr>
-        {% for id, node in nodes.items() %}
-        <tr>
-            <td>{{ id }}</td>
-            <td>{{ node.cpu_cores }}</td>
-            <td>{{ node.available_cores }}</td>
-            <td>{{ node.status }}</td>
-            <td>{{ node.pods|join(', ') }}</td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>Node ID</th>
+                <th>CPU Cores</th>
+                <th>Available Cores</th>
+                <th>Status</th>
+                <th>Pods</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for id, node in nodes.items() %}
+            <tr>
+                <td data-label="Node ID">{{ id }}</td>
+                <td data-label="CPU Cores">{{ node.cpu_cores }}</td>
+                <td data-label="Available Cores">{{ node.available_cores }}</td>
+                <td data-label="Status">{{ node.status }}</td>
+                <td data-label="Pods">{{ node.pods|join(', ') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </body>
 </html>
