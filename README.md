@@ -4,7 +4,7 @@ A mini-project simulating core Kubernetes features, including node management, p
 
 ## Team
 - **SRNs**: 018, 020, 023, 025
-- **Name**: Abhishek Patil ,Abhishek G M , Achyuth K , Adarsh 
+- **Name**: Abhishek Patil ,Abhishek G M , Achyuth K , Adarsh Upase
 - **Institution**: PES University
 - **Course**:  Cloud Computing
 
